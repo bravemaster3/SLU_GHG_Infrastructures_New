@@ -1,3 +1,6 @@
+
+photos_folder <- "photos_temp"
+
 # Enhanced function to add GPS coordinates, Site, and Credit (preserve existing GPS)
 add_metadata <- function(photo_path, latitude, longitude, site = NULL, credit = NULL) {
   # Check if file exists first
@@ -65,22 +68,43 @@ add_metadata <- function(photo_path, latitude, longitude, site = NULL, credit = 
 }
 
 # Your updated coordinates with Site and Credit
+# coordinates <- data.frame(
+#   filename = c("HfM_aerial.jpg", "HfM_tower.jpg", "HfM_tower2.jpg", 
+#                "Hmr_aerial.jpg", "Hmr_tower.jpg", "Hmr_chamber.jpg", "Hmr_chamber2.jpg", 
+#                "Srj_tower.jpg", "Srj_tower2.jpg", "SVB_tower.jpg"),
+#   latitude = c(64.159555, 64.159555, 64.159555, 64.159996, 64.159996, 64.1601, 64.1601, 64.174977, 64.174977, 64.256097),
+#   longitude = c(19.551496, 19.551496, 19.551496, 19.569240, 19.569240, 19.5696, 19.5696, 19.563810, 19.563810, 19.774511),
+#   Site = c("Halsingfors Stormyran", "Halsingfors Stormyran", "Halsingfors Stormyran",
+#            "Halmyran", "Halmyran", "Halmyran", "Halmyran",
+#            "Stortjarn", "Stortjarn", "Svartberget"),
+#   Credit = c("Andreas Palmén", "Andreas Palmén", "Andreas Palmén",
+#              "Andreas Palmén", "Andreas Palmén", "Andreas Palmén", "Andreas Palmén",
+#              "Andreas Palmén", "Andreas Palmén", "Andreas Palmén")
+# )
+
+
+
+
+# coordinates <- data.frame(
+#   filename = c("Tower.jpg", "BM_analyzers.jpg", "Entrance.jpg"),
+#   latitude = c(64.022575, 64.022575, 64.022575),
+#   longitude = c(20.569597, 20.569597, 20.569597),
+#   Site = c("Bullmark drained peatland forest", "Bullmark drained peatland forest", "Bullmark drained peatland forest"),
+#   Credit = c("Lei Gao", "Lei Gao", "Lei Gao")
+# )
+
+
 coordinates <- data.frame(
-  filename = c("HfM_aerial.jpg", "HfM_tower.jpg", "HfM_tower2.jpg", 
-               "Hmr_aerial.jpg", "Hmr_tower.jpg", "Hmr_chamber.jpg", "Hmr_chamber2.jpg", 
-               "Srj_tower.jpg", "Srj_tower2.jpg", "SVB_tower.jpg"),
-  latitude = c(64.159555, 64.159555, 64.159555, 64.159996, 64.159996, 64.1601, 64.1601, 64.174977, 64.174977, 64.256097),
-  longitude = c(19.551496, 19.551496, 19.551496, 19.569240, 19.569240, 19.5696, 19.5696, 19.563810, 19.563810, 19.774511),
-  Site = c("Halsingfors Stormyran", "Halsingfors Stormyran", "Halsingfors Stormyran",
-           "Halmyran", "Halmyran", "Halmyran", "Halmyran",
-           "Stortjarn", "Stortjarn", "Svartberget"),
-  Credit = c("Andreas Palmén", "Andreas Palmén", "Andreas Palmén",
-             "Andreas Palmén", "Andreas Palmén", "Andreas Palmén", "Andreas Palmén",
-             "Andreas Palmén", "Andreas Palmén", "Andreas Palmén")
+  filename = c("TBM_Tower.jpg", "TBM.jpg", "TBM2.jpg", "TBM_Chamber.jpg", "TBCC_DC2.jpg", "TBCC_DC3.jpg"),
+  latitude = c(64.181021, 64.181021, 64.181021, 64.181242,64.177525, 64.17485),
+  longitude = c(19.83733, 19.83733, 19.83733, 19.839874, 19.862569, 19.862563),
+  Site = c("Trollberget mire", "Trollberget mire", "Trollberget mire", "Trollberget mire","Trollberget clearcut ditch cleaning", "Trollberget clearcut no ditch cleaning"),
+  Credit = c("Alexander Pinkwart", "Alexander Pinkwart", "Alexander Pinkwart", "Alexander Pinkwart", "Alexander Pinkwart", "Alexander Pinkwart")
 )
 
+
 # Find all image files in current directory and subdirectories
-all_photos <- list.files(".", pattern = "\\.(jpg|jpeg|png|tiff)$", 
+all_photos <- list.files(photos_folder, pattern = "\\.(jpg|jpeg|png|tiff)$", 
                          ignore.case = TRUE, recursive = TRUE, full.names = TRUE)
 
 cat("Found photos:\n")
@@ -128,9 +152,9 @@ verify_metadata <- function(photo_path) {
 
 cat("\n=== Verification ===\n")
 # Verify a few photos
-for (filename in c("HfM_aerial.jpg", "Hmr_tower.jpg")) {
-  photo_match <- all_photos[basename(all_photos) == filename]
-  if (length(photo_match) > 0) {
-    verify_metadata(photo_match[1])
-  }
-}
+# for (filename in c("HfM_aerial.jpg", "Hmr_tower.jpg")) {
+#   photo_match <- all_photos[basename(all_photos) == filename]
+#   if (length(photo_match) > 0) {
+#     verify_metadata(photo_match[1])
+#   }
+# }
